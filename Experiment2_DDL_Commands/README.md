@@ -104,124 +104,212 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+```
+Create a table named Bonuses with the following constraints:
+BonusID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+BonusAmount as REAL should be greater than 0.
+BonusDate as DATE.
+Reason as TEXT should not be NULL.
+```
 
 ```sql
--- Paste your SQL code below for Question 1
+create table Bonuses(
+ BonusID integer primary key,
+ EmployeeID integer,
+ BonusAmount real check(BonusAmount>0),
+ BonusDate date,
+ Reason text NOT NULL,
+ foreign key(EmployeeID) references Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![Output1](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-1.png?raw=true)
 
 **Question 2**
----
--- Paste Question 2 here
+```
+Create a table named Employees with the following columns:
+
+EmployeeID as INTEGER
+FirstName as TEXT
+LastName as TEXT
+HireDate as DATE
+```
 
 ```sql
--- Paste your SQL code below for Question 2
+CREATE TABLE Employees (
+EmployeeID INTEGER,
+FirstName TEXT,
+LastName TEXT,
+HireDate DATE
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+![Output2](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-2.png?raw=true)
 
 **Question 3**
----
--- Paste Question 3 here
+```
+Write a SQL query to Add a new column mobilenumber as number in the Student_details table.
+
+Sample table: Student_details
+
+ cid              name             type   notnull     dflt_value  pk
+---------------  ---------------  -----  ----------  ----------  ----------
+0                RollNo           int    0                       1
+1                Name             VARCH  1                       0
+2                Gender           TEXT   1                       0
+3                Subject          VARCH  0                       0
+4                MARKS            INT (  0                       0
+```
 
 ```sql
--- Paste your SQL code below for Question 3
+ALTER TABLE Student_details
+ADD mobilenumber number;
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Output3](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-3.png?raw=true)
 
 **Question 4**
----
--- Paste Question 4 here
+```
+Insert all customers from Old_customers into Customers
+
+Table attributes are CustomerID, Name, Address, Email
+```
 
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Customers(CustomerID,Name,Address,Email)
+SELECT CustomerID,Name,Address,Email from Old_customers
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Output4](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-4.png?raw=true)
 
 **Question 5**
----
--- Paste Question 5 here
+```
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
+```
 
 ```sql
--- Paste your SQL code below for Question 5
+ALTER TABLE employee
+ADD COLUMN department_id INTEGER;
+ALTER TABLE employee
+ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Output5](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-5.png?raw=true)
 
 **Question 6**
----
--- Paste Question 6 here
+```
+Create a table named Locations with the following columns:
+
+LocationID as INTEGER
+LocationName as TEXT
+Address as TEXT
+```
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Output6](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-6.png?raw=true)
 
 **Question 7**
----
--- Paste Question 7 here
+```
+Create a table named Departments with the following columns:
+
+DepartmentID as INTEGER
+DepartmentName as TEXT
+```
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Departments(
+DepartmentID INTEGER,
+DepartmentName TEXT
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Output7](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-7.png?raw=true)
 
 **Question 8**
----
--- Paste Question 8 here
+```
+Write a SQL Query for inserting the below values in the table Customers
+
+ID               NAME             AGE  ADDRESS     SALARY      
+---------------  ---------------  ---  ----------  ----------  
+1                Ramesh           32   Ahmedabad   2000
+2                Khilan           25   Delhi       1500
+3                Kaushik          23   Kota        2000
+```
 
 ```sql
--- Paste your SQL code below for Question 8
+INSERT INTO Customers(ID,NAME,AGE,ADDRESS,SALARY)
+VALUES(1,"Ramesh",32,"Ahmedabad",2000),(2,"Khilan",25,"Delhi",1500),(3,"Kaushik",23,"Kota",2000);
+
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Output8](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-8.png?raw=true)
 
 **Question 9**
----
--- Paste Question 9 here
+```
+Create a table named Customers with the following columns:
+
+CustomerID as INTEGER
+Name as TEXT
+Email as TEXT
+JoinDate as DATETIME
+```
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Customers(
+CustomerID INTEGER,
+Name TEXT,
+Email TEXT,
+JoinDate DATETIME
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Output9](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-9.png?raw=true)
 
 **Question 10**
----
--- Paste Question 10 here
+```
+Insert the below data into the Employee table, allowing the Department and Salary columns to take their default values.
+
+EmployeeID  Name         Position
+----------  -----------  ----------
+4           Emily White  Analyst
+
+Note: The Department and Salary columns will use their default values.
+```
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Employee(EmployeeID,Name,Position)
+VALUES(4,"Emily White","Analyst");
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Output10](https://github.com/Sandhiya2517/19CS404-DBMS-Lab-Manual/blob/main/Experiment2_DDL_Commands/ex2-10.png?raw=true)
 
 
 ## RESULT
