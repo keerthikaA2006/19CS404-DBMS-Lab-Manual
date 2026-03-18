@@ -38,123 +38,188 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to Retrieve the names and cities of customers who have the same city as customers with IDs 3 and 7
 
 ```sql
--- Paste your SQL code below for Question 1
+select name,city
+from customer
+where city IN(
+          select city
+          from customer
+          where id in(3,7)
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="711" height="542" alt="image" src="https://github.com/user-attachments/assets/32b32efa-f825-4516-971a-9766659c53e5" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+From the following tables write a SQL query to find salespeople who had more than one customer. Return salesman_id and name.
+
+salesman table
 
 ```sql
--- Paste your SQL code below for Question 2
+select s.salesman_id,s.name
+from salesman s
+join customer c
+  on s.salesman_id=c.salesman_id
+group by s.salesman_id,s.name
+having COUNT(c.customer_id)>1;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="652" height="541" alt="image" src="https://github.com/user-attachments/assets/79b4842d-98ae-452c-88f5-952612b53fa1" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 
 ```sql
--- Paste your SQL code below for Question 3
+select *
+from CUSTOMERS
+where salary>4500;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1234" height="496" alt="image" src="https://github.com/user-attachments/assets/7fbfdc38-76c7-4e5e-82ac-c3583ea82267" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to List departments with names longer than the average length
+
+Departments Table (attributes: department_id, department_name)
 
 ```sql
--- Paste your SQL code below for Question 4
+select department_id,department_name
+from Departments
+where LENGTH(department_name)>(
+       select AVG(LENGTH(department_name))
+       from Departments
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="657" height="462" alt="image" src="https://github.com/user-attachments/assets/e189e289-0b23-4139-8c86-b5b0c3357c7f" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query that retrieves the all the columns from the Table Grades, where the grade is equal to the minimum grade achieved in each subject.
+
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
 
 ```sql
--- Paste your SQL code below for Question 5
+select *
+from GRADES g
+where grade=(
+    select MIN(grade)
+    from GRADES
+    where subject=g.subject
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1249" height="513" alt="image" src="https://github.com/user-attachments/assets/bfb17f62-d12c-43e8-be38-ad988481f354" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to Find employees who have an age less than the average age of employees with incomes over 2.5 Lakh
 
 ```sql
--- Paste your SQL code below for Question 6
+select *
+from Employee
+where age<(
+    select AVG(age)
+    from Employee
+    where income>250000);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1136" height="454" alt="image" src="https://github.com/user-attachments/assets/68a9c84c-857d-4902-81c6-7871eb1576da" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is LESS than $2500.
 
 ```sql
--- Paste your SQL code below for Question 7
+select *
+from CUSTOMERS
+WHERE SALARY<2500;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1075" height="466" alt="image" src="https://github.com/user-attachments/assets/e9bb2334-d1c0-4b28-97cc-79e22bb8e47c" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to Retrieve the medications with dosages equal to the highest dosage
+
+Table Name: Medications (attributes: medication_id, medication_name, dosage)
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT *
+from Medications
+where dosage=(
+    select MAX(dosage)
+    from Medications);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="842" height="356" alt="image" src="https://github.com/user-attachments/assets/aefa6167-3d0f-42aa-a123-247df7e53e31" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Retrieve the medications with dosages equal to the lowest dosage
+
+Table Name: Medications (attributes: medication_id, medication_name, dosage)
 
 ```sql
--- Paste your SQL code below for Question 9
+select *
+from Medications
+where dosage=(
+     select MIN(dosage)
+     from Medications);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="782" height="367" alt="image" src="https://github.com/user-attachments/assets/a99c9962-b6fe-45dc-96d4-e007fb3b04aa" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a query to display all the customers whose ID is the difference between the salesperson ID of Mc Lyon and 2001.
 
 ```sql
--- Paste your SQL code below for Question 10
+select *
+from customer
+where customer_id=(
+     select salesman_id-2001
+     from salesman
+     where name='Mc Lyon');
+
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1122" height="263" alt="image" src="https://github.com/user-attachments/assets/4ece95f1-7d45-422c-b7e3-803a7c3cad19" />
+
 
 
 ## RESULT
